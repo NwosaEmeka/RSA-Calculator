@@ -115,13 +115,14 @@ function isPrime(num) {
 			if (num % i === 0) {
 				flag = 1;
 				break;
-			} 
+			}
 		}
-		if (flag === 1) {
-			return false;
-		} else {
-			return true;
-		}
+		// if (flag === 1) {
+		// 	return false;
+		// } else {
+		// 	return true;
+		// }
+		return flag === 1 ? false : true;
 	}
 }
 

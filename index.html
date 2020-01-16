@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="step-by-step demonstration of RSA algorithm calculation">
+  <meta name="keywords" content="RSA algorithm, encryption, decryption, public key, asymmetrical encryption, message authenticity, message confidentiality">
+  <meta name="author" content="Nwosa Emeka Afamefuna">
+  <link rel="stylesheet" href="style.css">
+  <title>RSA Calculator</title>
+</head>
+<body>
+  <div class="container">
+    <header class="description">
+      <h1>RSA Calculator</h1>
+      <p>This module demonstrates step-by-step encryption with the RSA Algorithm to ensure authenticity of
+        message. The sender encrypt the message with its private key and the receiver decrypt with the sender's public key.
+      </p>
+      <p>No provisions are made for high precision arithmetic, nor have the algorithms been encoded for efficiency when
+        dealing
+        with large numbers.</p>
+  
+    </header>
+    <section class="calculation">
+      <div class="line">
+        <div class="calculateN">
+          <p><span class="step">Step 1. </span>Calculate N which is a product of two distinct prime numbers <em>p</em> and <em>q</em></p>
+          <!-- Get P -->
+          <span class="pandqerror "></span>
+          <div class="inputs">
+            <label for="p">p = </label>
+            <input type="number" name="p" id="p">
+          </div>
+          <!-- Get q -->
+          <div class="inputs">
+            <label for="q">q = </label>
+            <input type="number" name="q" id="q">
+          </div>
+          <!--calculate N -->
+          <div class="calcN">
+            <button type="submit" class="btn btn-calc">Calculate N</button>
+            <input type="text" name="findN" id="findN" disabled>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Calculate theta of N -->
+      <div class="line">
+        <div class="calcR">
+          <p><span class="step">Step 2. </span> Find &theta;(N) which is <em>(p-1) * (q-1)</em></p>
+          <div>
+            <label for="getR" >&theta;(N) = </label>
+            <input type="text" name="getR" id="getR" disabled>
+          </div>
+        </div>
+      </div>
+
+      <!-- Calculate e -->
+      <div class="line">
+        <div class="calcE">
+          <p><span class="step">Step 3. </span> Select <em>e</em> such that gcd(&theta;(N),<em>e</em>) = 1 and 1 < <em>e</em>
+              < &theta;(N)</p> 
+              <span class="errore "></span>
+              <div>
+                <label for="ValuesofE">Possible Values of e</label>
+                <input type="text" name="ValuesofE" id="ValuesofE" disabled>
+              </div>
+                <label for="getE">Enter e </label>
+                <input type="number" name="getE" id="getE">
+                
+        </div>
+      </div>
+
+      <!-- Calculate d -->
+      <div class="line">
+        <div class="calcD">
+          <p><span class="step">Step 4. </span> Calculate <em>d</em> such that d*e mod(&theta;(N) = 1 </p>
+          <label for="setD">d = </label>
+          <input type="number" name="setD" id="setD" disabled>
+        </div>
+      </div>
+
+      <!-- set public and private key -->
+      <div class="line">
+        <p><span class="step">Step 5. </span> Set public key and private key</p>
+        <div class="setkey public-key">
+          <label for="publicKey">Public Key {e , n} = </label>
+          <input type="text" name="publicKey" id="publicKey" disabled>
+        </div>
+        <div class="setkey private-key">
+          <label for="privateKey">Private Key {d , n} = </label>
+          <input type="text" name="privateKey" id="privateKey" disabled>
+        </div>
+      </div>
+
+
+      <!-- Encrypting -->
+      <div class="line">
+        <div class="results">
+          <p><span class="step">Step 6. </span> Enter plaintext message M to encrypt such that M < N ( C = M <sup>d</sup> (mod n) )</p>
+          <span class="ptexterror "></span>
+              <div class="plainText">
+              <label for="msg">Enter a number to encrypt</label>
+              <input type="number" name="msg" id="msg">
+              </div>
+        </div>
+        <div class="PlainText-result">
+          <button type="submit" class="btn btn-encrypt">Encrypt</button>
+          <span id="plainResult"></span>
+        </div>
+      </div>
+      
+      
+      
+    </section>
+    <p>This module is only for data encryption for authenticity. To ensure confidentiality, the plaintext should be
+      encrypted with receiver's public key and decrpted with reciver's private key</p>
+    <p>To ensure both authenticity and confidentiality, the plainText is first encrypted with private key of sender then the
+      resulting cipherText is encrypted again with public key of receiver. Decryption starts with private key of receiver
+      and the original message is obtain by decrypting with sender public key </p>
+      <p class="disclaimer">Disclaimer: The program is written in JavaScript, and runs on the client computer. Most implementations seem to handle numbers of up
+      to 16 digits correctly.</p>
+  </div>
+
+  <!-- Add javascript -->
+  <script src="app.js"></script>
+  <footer >
+    <p>Nwosa Emeka @ <a href="https://fsktm.upm.edu.my/?L=en">University Putra Malaysia</a></p>
+    <script type="text/javascript">
+    let theDate = new Date();
+    document.write("Copywrite &copy;"+theDate.getFullYear());
+    </script>
+  </footer>
+</body>
+</html>

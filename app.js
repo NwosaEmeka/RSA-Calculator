@@ -111,13 +111,16 @@ function isPrime(num) {
 	if (num === 2) {
 		return true;
 	} else {
-		for (let i = 2; i < num; i++) {
+		for (let i = 2; i <= Math.sqrt(num); i++) {
 			if (num % i === 0) {
-				return false;
+				flag = 1;
 				break;
-			} else {
-				return true;
-			}
+			} 
+		}
+		if (flag === 1) {
+			return false;
+		} else {
+			return true;
 		}
 	}
 }
